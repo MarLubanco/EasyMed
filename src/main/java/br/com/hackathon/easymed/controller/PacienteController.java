@@ -18,18 +18,18 @@ public class PacienteController {
     private PacienteRepository pacienteRepository;
 
     @GetMapping("/paciente")
-    public Page<Paciente> getQuestions(Pageable pageable) {
+    public Page<Paciente> getPaciente(Pageable pageable) {
         return pacienteRepository.findAll(pageable);
     }
 
 
     @PostMapping("/paciente")
-    public Paciente createQuestion(@Valid @RequestBody Paciente paciente) {
+    public Paciente createPaciente(@Valid @RequestBody Paciente paciente) {
         return pacienteRepository.save(paciente);
     }
 
     @PutMapping("/paciente/{pacienteId}")
-    public Paciente updateQuestion(@PathVariable Long pacienteId,
+    public Paciente updatePaciente(@PathVariable Long pacienteId,
                                    @Valid @RequestBody Paciente pacienteRequest) {
         return pacienteRepository.findById(pacienteId)
                 .map(paciente -> {
@@ -41,7 +41,7 @@ public class PacienteController {
 
 
     @DeleteMapping("/paciente/{pacienteId}")
-    public ResponseEntity<?> deleteQuestion(@PathVariable Long pacienteId) {
+    public ResponseEntity<?> deletePaciente(@PathVariable Long pacienteId) {
         return pacienteRepository.findById(pacienteId)
                 .map(paciente -> {
                     pacienteRepository.delete(paciente);
