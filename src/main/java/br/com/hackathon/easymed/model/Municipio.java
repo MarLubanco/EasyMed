@@ -7,12 +7,13 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "municipio")
 @Getter
 @Setter
-public class Municipio extends AuditModel {
+public class Municipio extends AuditModel implements Serializable {
     @Id
     @GeneratedValue(generator = "municipio_generator")
     @SequenceGenerator(

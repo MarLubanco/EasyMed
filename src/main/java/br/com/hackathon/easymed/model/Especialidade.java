@@ -7,23 +7,20 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "estado")
+@Table(name = "especialidade")
 @Getter
 @Setter
-public class Estado extends AuditModel implements Serializable {
+public class Especialidade extends AuditModel implements Serializable {
     @Id
-    @GeneratedValue(generator = "estado_generator")
+    @GeneratedValue(generator = "especialidade_generator")
     @SequenceGenerator(
-            name = "estado_generator",
-            sequenceName = "estado_sequence",
+            name = "especialidade_generator",
+            sequenceName = "especialidade_sequence",
             initialValue = 1000
     )
     private Long id;
 
     @Column(name = "nome")
     private String nome;
-
-    @Column(name = "sigla")
-    private String sigla;
 
 }
