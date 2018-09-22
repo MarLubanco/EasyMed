@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "medico")
@@ -22,4 +23,10 @@ public class Medico extends Pessoa implements Serializable {
 
     @Column(name = "crm")
     private String crm;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "medico_especialidade",
+            joinColumns = {@JoinColumn(name = "especialidade_id")},
+            inverseJoinColumns = {@JoinColumn(name = "medico_id")})
+    private List<Especialidade> especialidades;
 }
