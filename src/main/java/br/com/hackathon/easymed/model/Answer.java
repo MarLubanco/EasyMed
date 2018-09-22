@@ -3,15 +3,13 @@ package br.com.hackathon.easymed.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "answers")
-@Getter
-@Setter
+@lombok.Getter
+@lombok.Setter
 public class Answer extends AuditModel {
     @Id
     @GeneratedValue(generator = "answer_generator")
