@@ -28,24 +28,24 @@ public class MedicoController {
         return medicoRepository.save(medico);
     }
 
-    @PutMapping("/medico/{pacienteId}")
-    public Medico updateMedico(@PathVariable Long pacienteId,
-                                   @Valid @RequestBody Medico pacienteRequest) {
-        return medicoRepository.findById(pacienteId)
+    @PutMapping("/medico/{medicoId}")
+    public Medico updateMedico(@PathVariable Long medicoId,
+                                   @Valid @RequestBody Medico medicoRequest) {
+        return medicoRepository.findById(medicoId)
                 .map(medico -> {
-                    medico.setNome(pacienteRequest.getNome());
-                    medico.setNomeMae(pacienteRequest.getNomeMae());
+                    medico.setNome(medicoRequest.getNome());
+                    medico.setNomeMae(medicoRequest.getNomeMae());
                     return medicoRepository.save(medico);
-                }).orElseThrow(() -> new ResourceNotFoundException("Paciênte não encontrado com id " + pacienteId));
+                }).orElseThrow(() -> new ResourceNotFoundException("Médico não encontrado com id " + medicoId));
     }
 
 
-    @DeleteMapping("/medico/{pacienteId}")
-    public ResponseEntity<?> deleteMedico(@PathVariable Long pacienteId) {
-        return medicoRepository.findById(pacienteId)
+    @DeleteMapping("/medico/{medicoId}")
+    public ResponseEntity<?> deleteMedico(@PathVariable Long medicoId) {
+        return medicoRepository.findById(medicoId)
                 .map(medico -> {
                     medicoRepository.delete(medico);
                     return ResponseEntity.ok().build();
-                }).orElseThrow(() -> new ResourceNotFoundException("Paciênte não encontrado com id " + pacienteId));
+                }).orElseThrow(() -> new ResourceNotFoundException("Médico não encontrado com id " + medicoId));
     }
 }
