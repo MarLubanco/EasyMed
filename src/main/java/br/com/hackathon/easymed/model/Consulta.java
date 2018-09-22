@@ -1,7 +1,5 @@
 package br.com.hackathon.easymed.model;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -34,7 +32,7 @@ public class Consulta {
   private String nomeClinica;
 
   @Column
-  @OneToMany
+  @OneToMany(cascade = CascadeType.ALL)
   private List<Exame> exame;
 
   public Consulta(Long id, Date data, String observacao, String nomePaciente, String nomeMedico, String nomeClinica, List<Exame> exame) {
